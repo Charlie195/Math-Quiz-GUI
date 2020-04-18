@@ -122,12 +122,17 @@ def submit_difference_answer():
             response2.place(x=20, y=120)
             difference_entry.delete(0, END)
     else:
-        next_question_button.destroy()
-        subtraction_question.destroy()
-        difference_entry.destroy()
-        submit_difference_button.destroy()
-        end_label = Label(root, text="You are done!", font=("calibri", 20))
-        end_label.pack(side=TOP)
+        response2 = Label(root, text="Sorry, your answer is wrong. Please try again")
+        if user_difference.get() == difference:
+            next_question_button.destroy()
+            subtraction_question.destroy()
+            difference_entry.destroy()
+            submit_difference_button.destroy()
+            end_label = Label(root, text="You are done!", font=("calibri", 20))
+            end_label.pack(side=TOP)
+        else:
+            response2.place(x=20, y=120)
+            difference_entry.delete(0, END)
 
 def multiply(N1, N2):
     global user_product
