@@ -20,6 +20,7 @@ num_questions_ans = Entry(root, textvariable=Num_questions, width=5)
 num_questions_ans.place(x=255, y=80)
 
 run = 1
+# num_correct = 0
 
 def start():
     global num_of_questions
@@ -62,6 +63,7 @@ def add(N1, N2):
 
 def submit_sum_answer():
     global run
+    # global num_correct
     next_question_button = Button(root, text="Next Question", command=next_question)
     if run < num_of_questions:
         response2 = Label(root, text="Sorry, your answer is wrong. Please try again")
@@ -73,6 +75,7 @@ def submit_sum_answer():
             response.place(x=20, y=120)
             next_question_button.place(x=20, y=150)
             run += 1
+            # num_correct += 1
         else:
             response2.place(x=20, y=120)
             sum_entry.delete(0, END)
@@ -85,6 +88,10 @@ def submit_sum_answer():
             submit_sum_button.destroy()
             end_label = Label(root, text="You are done!", font=("calibri", 20))
             end_label.pack(side=TOP)
+            # cover_up = Label(root, text="                                                                                     ")
+            # cover_up.place(x=20, y=120)
+            # num_correct += 1
+            # finished_summary()
         else:
             response2.place(x=20, y=120)
             sum_entry.delete(0, END)
@@ -106,6 +113,7 @@ def subtract(N1, N2):
 
 def submit_difference_answer():
     global run
+    # global num_correct
     next_question_button = Button(root, text="Next Question", command=next_question)
     if run < num_of_questions:
         response2 = Label(root, text="Sorry, your answer is wrong. Please try again")
@@ -118,6 +126,7 @@ def submit_difference_answer():
             next_question_button = Button(root, text="Next Question", command=next_question)
             next_question_button.place(x=20, y=150)
             run += 1
+            # num_correct += 1
         else:
             response2.place(x=20, y=120)
             difference_entry.delete(0, END)
@@ -130,6 +139,10 @@ def submit_difference_answer():
             submit_difference_button.destroy()
             end_label = Label(root, text="You are done!", font=("calibri", 20))
             end_label.pack(side=TOP)
+            cover_up = Label(root, text="                                                                                     ")
+            cover_up.place(x=20, y=120)
+            num_correct += 1
+            finished_summary()
         else:
             response2.place(x=20, y=120)
             difference_entry.delete(0, END)
@@ -151,6 +164,7 @@ def multiply(N1, N2):
 
 def submit_product_answer():
     global run
+    # global num_correct
     next_question_button = Button(root, text="Next Question", command=next_question)
     if run < num_of_questions:
         response2 = Label(root, text="Sorry, your answer is wrong. Please try again")
@@ -163,16 +177,26 @@ def submit_product_answer():
             next_question_button = Button(root, text="Next Question", command=next_question)
             next_question_button.place(x=20, y=150)
             run += 1
+            # num_correct += 1
         else:
             response2.place(x=20, y=120)
             product_entry.delete(0, END)
     else:
-        next_question_button.destroy()
-        multiplication_question.destroy()
-        product_entry.destroy()
-        submit_product_button.destroy()
-        end_label = Label(root, text="You are done!", font=("calibri", 20))
-        end_label.pack(side=TOP)
+        response2 = Label(root, text="Sorry, your answer is wrong. Please try again")
+        if user_product.get() == product:
+            next_question_button.destroy()
+            multiplication_question.destroy()
+            product_entry.destroy()
+            submit_product_button.destroy()
+            end_label = Label(root, text="You are done!", font=("calibri", 20))
+            end_label.pack(side=TOP)
+            cover_up = Label(root, text="                                                                                     ")
+            cover_up.place(x=20, y=120)
+            num_correct += 1
+            finished_summary()
+        else:
+            response2.place(x=20, y=120)
+            product_entry.delete(0, END)
 
 def divide(N1, N2):
     global user_quotient
@@ -191,6 +215,7 @@ def divide(N1, N2):
 
 def submit_quotient_answer():
     global run
+    # global num_correct
     next_question_button = Button(root, text="Next Question", command=next_question)
     if run < num_of_questions:
         response2 = Label(root, text="Sorry, your answer is wrong. Please try again")
@@ -203,16 +228,26 @@ def submit_quotient_answer():
             next_question_button = Button(root, text="Next Question", command=next_question)
             next_question_button.place(x=20, y=150)
             run += 1
+            # num_correct += 1
         else:
             response2.place(x=20, y=120)
             quotient_entry.delete(0, END)
     else:
-        next_question_button.destroy()
-        division_question.destroy()
-        quotient_entry.destroy()
-        submit_quotient_button.destroy()
-        end_label = Label(root, text="You are done!", font=("calibri", 20))
-        end_label.pack(side=TOP)
+        response2 = Label(root, text="Sorry, your answer is wrong. Please try again")
+        if user_quotient.get() == quotient:
+            next_question_button.destroy()
+            division_question.destroy()
+            quotient_entry.destroy()
+            submit_quotient_button.destroy()
+            end_label = Label(root, text="You are done!", font=("calibri", 20))
+            end_label.pack(side=TOP)
+            # cover_up = Label(root, text="                                                                                     ")
+            # cover_up.place(x=20, y=120)
+            # num_correct += 1
+            # finished_summary()
+        else:
+            response2.place(x=20, y=120)
+            quotient_entry.delete(0, END)
 
 def next_question():
     for widget in root.winfo_children():
@@ -226,4 +261,8 @@ start_button.place(x=295, y=75)
 
 operations = [add, subtract, multiply, divide]
 
+# def finished_summary():
+#     summary = Label(root, text=str(num_correct) + "/" + str(num_of_quesitons))
+#     summary.place(x=50, y=50)
+#
 root.mainloop()
