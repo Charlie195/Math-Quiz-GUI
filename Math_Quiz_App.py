@@ -88,8 +88,8 @@ def submit_sum_answer():
             submit_sum_button.destroy()
             end_label = Label(root, text="You are done!", font=("calibri", 20))
             end_label.pack(side=TOP)
-            # cover_up = Label(root, text="                                                                                     ")
-            # cover_up.place(x=20, y=120)
+            cover_up = Label(root, text="                                                                                     ")
+            cover_up.place(x=20, y=120)
             # num_correct += 1
             # finished_summary()
         else:
@@ -141,8 +141,8 @@ def submit_difference_answer():
             end_label.pack(side=TOP)
             cover_up = Label(root, text="                                                                                     ")
             cover_up.place(x=20, y=120)
-            num_correct += 1
-            finished_summary()
+            # num_correct += 1
+            # finished_summary()
         else:
             response2.place(x=20, y=120)
             difference_entry.delete(0, END)
@@ -192,8 +192,8 @@ def submit_product_answer():
             end_label.pack(side=TOP)
             cover_up = Label(root, text="                                                                                     ")
             cover_up.place(x=20, y=120)
-            num_correct += 1
-            finished_summary()
+            # num_correct += 1
+            # finished_summary()
         else:
             response2.place(x=20, y=120)
             product_entry.delete(0, END)
